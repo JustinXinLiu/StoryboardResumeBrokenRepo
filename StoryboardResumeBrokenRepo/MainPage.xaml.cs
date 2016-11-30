@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,19 @@ namespace StoryboardResumeBrokenRepo
         public MainPage()
         {
             this.InitializeComponent();
+
+            Loaded += MainPage_Loaded;
+        }
+
+        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            MyStoryboard.Begin();
+
+            await Task.Delay(800);
+            MyStoryboard.Pause();
+
+            await Task.Delay(1000);
+            MyStoryboard.Resume();
         }
     }
 }
